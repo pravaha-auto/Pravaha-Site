@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme: crisp white, navy foreground, teal accent */
+    --background: 0 0% 100%;
+    --foreground: 218 33% 12%; /* deep navy text */
+
+    --card: 0 0% 100%;
+    --card-foreground: 218 33% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 218 33% 12%;
+
+    --primary: 218 64% 22%; /* navy */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 20% 97%; /* light gray */
+    --secondary-foreground: 218 33% 12%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 16% 46%;
+
+    --accent: 173 68% 36%; /* teal */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 210 16% 90%;
+    --input: 210 16% 90%;
+    --ring: 218 64% 22%;
+
+    --radius: 0.5rem;
+
+    /* Charts (kept but tuned) */
+    --chart-1: 218 64% 22%;
+    --chart-2: 173 68% 36%;
+    --chart-3: 210 8% 62%;
+    --chart-4: 42 90% 55%;
+    --chart-5: 0 72% 51%;
+  }
+
+  .dark {
+    /* Dark mode tuned to navy */
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 218 64% 62%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 222 26% 14%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 222 26% 14%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 173 68% 36%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 26% 18%;
+    --input: 222 26% 18%;
+    --ring: 218 64% 62%;
+
+    --chart-1: 218 64% 62%;
+    --chart-2: 173 68% 46%;
+    --chart-3: 42 90% 60%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", "Roboto", sans-serif;
+  }
+}
+
+@layer utilities {
+  .animate-spin-slow { animation: spin 3s linear infinite; }
+
+  .glass { background: rgba(255,255,255,0.6); backdrop-filter: blur(16px); border: 1px solid hsl(var(--border)); }
+  .shadow-sharp { box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+}
+
+/* Minimal scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: hsl(var(--secondary)); }
+::-webkit-scrollbar-thumb { background: hsl(var(--primary) / 0.3); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary) / 0.45); }
+
+html { scroll-behavior: smooth; }
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 { font-weight: 700; letter-spacing: -0.015em; }
+
+/* Card hover (subtle) */
+.card-hover { transition: transform 200ms ease, box-shadow 200ms ease; }
+.card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.06); }
+
+/* Flow helpers */
+@keyframes dash { to { stroke-dashoffset: -20; } }
+@keyframes dot { 0% { transform: translate(120px, 70px); } 33% { transform: translate(330px, 90px); } 66% { transform: translate(440px, 140px); } 100% { transform: translate(160px, 180px); } }
