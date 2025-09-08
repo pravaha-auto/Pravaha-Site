@@ -1,8 +1,6 @@
 "use client"
-
 import Header from "@/components/header"
 import Footer from "@/components/footer"
-import StackedCards from "@/components/stacked-cards"
 import { Workflow, Bot, PhoneCall, Plug } from "lucide-react"
 
 export default function ServicesPage() {
@@ -38,13 +36,30 @@ export default function ServicesPage() {
       <Header />
       <main className="container mx-auto px-4 py-16">
         <header className="max-w-3xl mx-auto text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-[hsl(var(--primary))] mb-4">Services</h1>
-          <p className="text-lg text-[hsl(var(--foreground)/0.75)]">
+          <h1 className="text-4xl md:text-5xl font-medium text-[hsl(var(--primary))] mb-4 tracking-tight">
+            Services
+          </h1>
+          <p className="text-lg md:text-xl text-[hsl(var(--foreground)/0.75)] leading-snug">
             Custom automation services—not software licenses. We build what fits your business.
           </p>
         </header>
 
-        <StackedCards items={stacks} className="max-w-4xl mx-auto" stickyOffset={28} />
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+          {stacks.map((s) => (
+            <div
+              key={s.title}
+              className="bg-white border border-[hsl(var(--border))] rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="flex items-center gap-3 mb-3 text-[hsl(var(--primary))]">
+                {s.icon}
+                <h3 className="text-xl md:text-2xl font-medium">{s.title}</h3>
+              </div>
+              <p className="text-[hsl(var(--foreground)/0.75)] text-[1.05rem] leading-relaxed">
+                {s.description}
+              </p>
+            </div>
+          ))}
+        </div>
       </main>
       <Footer />
     </div>
